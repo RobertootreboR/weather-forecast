@@ -9,13 +9,18 @@ import scala.io.Source
   */
 class JsonTest {
   def doAll() :Unit = {
+
+
     val html = Source.fromURL("http://api.openweathermap.org/data/2.5/forecast/city?id=3094802&APPID=6fdd34768f67187a44e6fe59a0f72e4a")
     val s = html.mkString
     println(s)
 
-    var json = parse(s)
-    var json2 = parse("""{"name":"luca", "id": "1q2w3e4r5t", "age": 26, "url":"http://www.nosqlnocry.wordpress.com"}""")
-    json2 = json2 merge render("height",175)
-    println(json2)
+    var json2 = parse(s)
+    println(pretty(json2 \\ "dt_txt"))
+    var name = for { JString(x) <- json2 \\ "name" } yield x
+    println(name)
+    println(json2 \\"name")
+
+
   }
 }
