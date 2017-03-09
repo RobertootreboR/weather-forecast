@@ -3,7 +3,7 @@ package weather
 import java.time.Instant
 
 import org.json4s.JsonAST.{JDouble, JInt, JString, JValue}
-import org.json4s.jackson.JsonMethods._
+
 /**
   * Created by robert on 09.03.17.
   */
@@ -33,10 +33,10 @@ object JParser {
       .append(formatJValue (day \ "wind" \ "speed"))
   }
 
-  def filterDays(city: Option[JValue]): List[JValue] = {
+  def filterDays(city: Option[JValue], hour:Int): List[JValue] = {
     JParser.getListArray(city)
       .children
-      .filter(child => JParser.filterHour(child, 15))
+      .filter(child => JParser.filterHour(child, hour))
   }
 
   private def getListArray(city: Option[JValue]): JValue = {
