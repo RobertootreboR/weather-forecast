@@ -1,13 +1,11 @@
 package weather
+
 import org.json4s._
-import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._
 
 import scala.io.Source
 
-/**
-  * Created by robert on 20.02.17.
-  */
+
 class WeatherGetter {
 
   val cityList= List(("3094802","Krakow"), ("756135","Warszawa"), ("3099434","Gdansk"))//, "759734", "3083271", "3081368", "3090048", "3102014", "765876", "3093133", "776069", "3096472", "769250", "3090104", "3088171", "3083829")
