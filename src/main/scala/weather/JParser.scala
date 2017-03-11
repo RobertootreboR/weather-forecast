@@ -7,7 +7,7 @@ import org.json4s.JsonAST.{JDouble, JInt, JString, JValue}
 object JParser {
 
   def getFileName(day: JValue) :String ={
-    val date = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(formatJValue(day \ "dt_txt"))
+    val date = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(formatJValue(day \ "dt_txt").substring(0, 10))
     java.time.Duration.between(Instant.now(),date.toInstant).toDays.toString
   }
   private def formatJValue(str : JValue): String ={
