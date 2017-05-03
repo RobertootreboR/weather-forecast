@@ -13,9 +13,9 @@ class WeatherGetter {
     val cityMap :Map[String,JValue] = getCities
 
   def download: Unit = {
-      cityList.foreach(pair=> println(parse(Source.fromURL("http://api.openweathermap.org/data/2.5/forecast/city?id="+pair._1+"&APPID=6fdd34768f67187a44e6fe59a0f72e4a").mkString) \\ "name"))
+      cityList.foreach(pair=> println(parse(Source.fromURL("http://api.openweathermap.org/data/2.5/forecast?id="+pair._1+"&APPID=c255cc3956cb46fff70bac79b597dba0").mkString) \\ "name"))
     }
-    private def download(id : String ) = parse(Source.fromURL("http://api.openweathermap.org/data/2.5/forecast/city?id="+id+"&APPID=6fdd34768f67187a44e6fe59a0f72e4a").mkString)
+    private def download(id : String ) = parse(Source.fromURL("http://api.openweathermap.org/data/2.5/forecast?id="+id+"&APPID=c255cc3956cb46fff70bac79b597dba0").mkString)
     def getCities :Map[String,JValue] = {
       cityList.map(pair => pair._2 -> download(pair._1)).toMap
     }
